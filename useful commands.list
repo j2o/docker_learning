@@ -1,0 +1,9 @@
+#Connect to a running containers terminal
+docker exec -it <CONTAINER name> bash
+docker exec -it <ALPINE CONTAINER /bin/sh
+
+#remove commands
+docker-compose rm
+docker ps -a -q | % { docker rm $_ }
+docker images -q | % { docker rmi $_ } #use -f if required to force
+docker rmi $(docker images -f dangling=true -q) # use to remove any dangling images layers
